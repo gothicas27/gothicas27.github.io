@@ -4,46 +4,97 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=1200">
-    
-    <title>Back in the day</title>
+    <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Document</title>
 </head>
 <body>
-
-<header class="header">
-    <div class="container">
-        <div class="header__inner">
-            <div class="header__logo">Cyberpunk</div>
-
-            <nav class="nav">
-                <a class="nav__link" href="./About.html">About</a>
-                <a class="nav__link" href="#">Service</a>
-                <a class="nav__link" href="#">Work</a>
-                <a class="nav__link" href="#">Contact</a>
-            </nav>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img class="logo" src="img/logo1.png" alt="">
+            </div>
+            <div class="drop">
+                <button class="nav-btn">&#9776;</button>
+                <nav class="nav">
+                    
+                    <a href="#">About</a>
+                    <a href="#">Price</a>
+                    <a href="#">Service</a>
+                </nav>
+                
+            </div>
         </div>
-    </div>
-</header>
-
-
-<div class="intro">
-    <div class="container2">
-        <h1>
-            <p>The most prominent representatives of cyberpunk in the US are Gibson (William Gibson), Bruce Sterling (Bruce Sterling), Pat Cadigan (Pat Cadigan), Rudy Rucker (Rudy Rucker) and John Shirley[en] (John Shirley); many also consider the representatives of cyberpunk or its propagandists Philip Kindred Dick (Phillip Kindred Dick), who is not among the most chronological frames of cyberpunk. In the 1980s cyberpunk came to cinema as well, showing the famous prints on fantastic fantasy films made since then Basically, cyberpunk works are aimed at a youth, protest audience. The plot of cyberpunk attacks often becomes a fight against hackers with powerful corporations. The main character is assumed to be a cybercriminal, a marginal without a systematic education.<br> Motivation for identifying suspicious cases of infection with their death in the ruling world, transnational dependence on them. A common feature of the best genres of truth is that the artistic world embodied in them is represented by a technological dystopia. In cyberpunk, high-tech development often coexists with the development of stratification, poverty, lack of rights, street anarchy in urban slums.<br> After a number of commercially successful adaptations The most prominent representatives of cyberpunk in the US are Gibson (William Gibson), Bruce Sterling (Bruce Sterling), Pat Cadigan (Pat Cadigan), Rudy Rucker (Rudy Rucker) and John Shirley[en] (John Shirley); many also consider the representatives of cyberpunk or its propagandists Philip Kindred Dick (Phillip Kindred Dick), who is not among the most chronological frames of cyberpunk. In the 1980s cyberpunk came to cinema as well, showing the famous prints on fantastic fantasy films made since then Basically, cyberpunk works are aimed at a youth, protest audience. The plot of cyberpunk attacks often becomes a fight against hackers with powerful corporations. The main character is assumed to be a cybercriminal, a marginal without a systematic education.<br> Motivation for identifying suspicious cases of infection with their death in the ruling world, transnational dependence on them. A common feature of the best genres of truth is that the artistic world embodied in them is represented by a technological dystopia. In cyberpunk, high-tech development often coexists with the development of stratification, poverty, lack of rights, street anarchy in urban slums.<br> After a number of commercially successful adaptations
-            </p>
-        </h1>
-        <img src="" alt="">
-            
-    </div>
-
+        <div class="wrapper">
+            <h1 class="countdown-title">Countdown Clock</h1>
+<div id="countdown" class="countdown">
+  <div class="countdown-number">
+    <span class="days countdown-time"></span>
+    <span class="countdown-text">Days</span>
+  </div>
+  <div class="countdown-number">
+    <span class="hours countdown-time"></span>
+    <span class="countdown-text">Hours</span>
+  </div>
+  <div class="countdown-number">
+    <span class="minutes countdown-time"></span>
+    <span class="countdown-text">Minutes</span>
+  </div>
+  <div class="countdown-number">
+    <span class="seconds countdown-time"></span>
+    <span class="countdown-text">Seconds</span>
+  </div>
 </div>
+<script>
+    function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var deadline="January 01 2018 00:00:00 GMT+0300"; //for Ukraine
+var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000); // for endless timer
+initializeClock('countdown', deadline);
+</script>
+<!-- 
+https://denis-creative.com/jstimer/
+https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+        </div>
+        </div>
+    </header>
 
 </body>
 </html>
